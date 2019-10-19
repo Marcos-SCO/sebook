@@ -1,11 +1,14 @@
 <?php
 
 use Model\LivroDAO;
+use Model\AutorDAO;
 
 //Pega a conexão
 $objSql = new Util\Sql($conn);
 
 $livroDAO = new LivroDAO($objSql);
+$autorDAO = new AutorDAO($objSql);
+$resultAutor = $autorDAO->listarAutores();
 
 //Seta armazena o idPost em setIdPost
 // $livroDAO->setIdUsuario($acessoUser);
@@ -91,7 +94,7 @@ if ($acessoUser != null || "") {
 
 	<h4 class="cadCat">Cadastro de Livros</h4>
 
-	<input type="hidden" name="isbnLivro" id="isbnLivro" value="<?= $_POST['isbnLivro'] ?? '' ?>">
+	<select name="selecAutor"
 
 	<input type="hidden" name="urlFotoLivro" id="urlFotoLivro" value="<?//= $livroController->getLivroDAO()->getUrlFotoLivro(); ?>">
 
