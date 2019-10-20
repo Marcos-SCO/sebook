@@ -9,19 +9,21 @@ body {
     overflow: hidden;
 }
 
-.containerScroll{
-    height:100vh;
-    overflow-y:scroll
+.containerScroll {
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll
 }
 
 div#containerTemplate::before {
     content: "";
     display: block;
     position: relative;
-    min-height:2rem
+    min-height: 2rem
 }
-@media (max-width:779.99px){
-    div#containerTemplate::before{
+
+@media (max-width:779.99px) {
+    div#containerTemplate::before {
         min-height: 90px
     }
 }
@@ -31,8 +33,7 @@ div#containerTemplate {
     max-width: 1000px;
     margin: 0 auto 4%;
     box-sizing: border-box;
-    min-height:500px
- 
+    min-height: 500px
 }
 
 * {
@@ -132,21 +133,18 @@ div#containerTemplate {
 .busca {
     box-sizing: border-box;
     padding: 1 !important;
-    height: 100vh
 }
 
 .busca .container {
     margin: auto;
-    max-width: 400px
+    max-width: 650px
 }
 
 .busca .box-search {
     width: 80%;
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    grid-gap: 10px;
+    display: flex;
     margin: 0 auto;
-    margin-bottom: 20px
+    margin-bottom: 6%;
 }
 
 .busca .box-search a.search {
@@ -169,19 +167,22 @@ div#containerTemplate {
 
 .busca .searchBooks {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center
 }
 
 .busca .searchBooks a {
     display: block;
     width: 100%;
-    height: 180px
+    padding: .105rem
 }
 
 .busca .searchBooks a img {
-    width: 100%
+    width: 100%;
+    max-width: 120px;
+    max-height: 174px;
 }
 
 
@@ -197,7 +198,7 @@ div#containerTemplate {
 
 .cadastro .container figure {
     margin: 0 auto;
-    display:flex;
+    display: flex;
     width: 208px
 }
 
@@ -458,21 +459,22 @@ div#containerTemplate {
     padding: 10% 0
 }
 
-.pagLivro .search-box{
+.pagLivro .search-box {
     position: absolute;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background: #2f3640;
     height: 40px;
     border-radius: 40px;
     padding: 4px
 }
 
-.pagLivro .search-box:hover > .search-btn{
+.pagLivro .search-box:hover>.search-btn {
     background: white;
 }
-.pagLivro .search-btn{
-    color:#e84118;
+
+.pagLivro .search-btn {
+    color: #e84118;
     float: right;
     width: 35px;
     height: 35px;
@@ -484,40 +486,46 @@ div#containerTemplate {
     transition: 0.4s;
 }
 
-.pagLivro .search-txt{
-    border:none;
+.pagLivro .search-txt {
+    border: none;
     background: none;
     outline: none;
-    float:left;
+    float: left;
     padding: 0 6px;
     color: white;
     font-size: 16px;
     transition: 0.4s;
     line-height: 40px;
-    width:  400px;
+    width: 400px;
 
 }
-.pagLivro .search-box img{
+
+.pagLivro .search-box img {
     height: 40px;
 }
-@media (max-width:900px){
+
+@media (max-width:900px) {
     .pagLivro .search-box {
-        height:40px;
-     
+        height: 40px;
+
     }
+
     .pagLivro .search-btn {
-        top:-43px
+        top: -43px
     }
-    .pagLivro .search-txt{
-        width:  0px;
+
+    .pagLivro .search-txt {
+        width: 0px;
         padding: 0px;
-    
+
     }
-    .pagLivro .search-box:hover > .search-txt{
-        width:300px;
- 
+
+    .pagLivro .search-box:hover>.search-txt {
+        width: 300px;
+
     }
-    .pagLivro .search-box:hover > .search-btn{
+
+    .pagLivro .search-box:hover>.search-btn {
         background: white;
         position: relative
     }
@@ -540,22 +548,22 @@ div#containerTemplate {
 
 .containerLogin {
     padding: 1rem;
-    width:100%;
-    align-self:center;
-    margin: 0 auto 
+    width: 100%;
+    align-self: center;
+    margin: 0 auto
 }
 
-.loginSpace{
-    width:100%
+.loginSpace {
+    width: 100%
 }
 
 .containerLogin .login {
     background-color: #fff;
-    padding: 3rem 1rem!important;
+    padding: 3rem 1rem !important;
     max-width: 500px;
     margin: 2% auto 0;
     border: 1px solid #ccc;
-    border-radius:.4rem; 
+    border-radius: .4rem;
 }
 
 .containerLogin figure {
@@ -581,7 +589,7 @@ div#containerTemplate {
     color: blue;
     text-decoration: none;
     font-size: 14px;
-    margin:5% auto
+    margin: 5% auto
 }
 
 .containerLogin .btn-modal-cadastre:hover {
@@ -611,7 +619,7 @@ div#containerTemplate {
     width: 100%;
     float: left;
     margin: 0 0 5px 0;
-    color:#000
+    color: #000
 }
 
 .containerLogin form input {
@@ -621,8 +629,8 @@ div#containerTemplate {
     border: 1px solid #999;
     /* height: 30px; */
     padding: .5rem;
-    outline:none;
-    font-size:16px
+    outline: none;
+    font-size: 16px
 }
 
 .containerLogin form input.button {
@@ -634,7 +642,7 @@ div#containerTemplate {
     width: 100%;
     max-width: 151px;
     margin: 0;
-    padding:.45rem
+    padding: .45rem
 }
 
 .containerLogin p {
@@ -713,12 +721,12 @@ div#containerTemplate {
     z-index: 102
 }
 
-.modal-open:checked ~ .modal-wrap:before,
-.modal-open:checked ~ .modal-wrap .modal-overlay {
+.modal-open:checked~.modal-wrap:before,
+.modal-open:checked~.modal-wrap .modal-overlay {
     display: block
 }
 
-.modal-open:checked ~ .modal-wrap .modal-dialog {
+.modal-open:checked~.modal-wrap .modal-dialog {
     transform: translate(-50%, -50%);
     position: fixed;
     top: 40%
@@ -823,7 +831,7 @@ div#containerTemplate {
 
 /*===================AREA DO QUEM SOMOS====================*/
 
-.quemSomos{
+.quemSomos {
     max-width: 650px;
     margin: auto;
 }
@@ -831,7 +839,7 @@ div#containerTemplate {
 .quemSomos .container h1 {
     font-size: 25px;
     text-align: center;
-    margin:1rem 0 0
+    margin: 1rem 0 0
 }
 
 .quemSomos .container .containerText {
@@ -843,9 +851,10 @@ div#containerTemplate {
     padding: 1rem;
     text-align: justify
 }
-@media (max-width:700px){
-    .quemSomos .container p{
-        text-align:left
+
+@media (max-width:700px) {
+    .quemSomos .container p {
+        text-align: left
     }
 }
 
@@ -857,8 +866,8 @@ div#containerTemplate {
 
 /*===================AREA DO SEBOS====================*/
 
-.sebos{
-    padding:1rem
+.sebos {
+    padding: 1rem
 }
 
 .sebos .container {
@@ -1267,7 +1276,7 @@ header .menuGroup {
     }
 
     .busca .container {
-        padding: 3vh
+        padding: 3%
     }
 }
 
@@ -1355,7 +1364,8 @@ section .banner img {
 
 section .banner .image {
     width: 100%;
-    height: 200px
+    height: 100%;
+    max-height:300px
 }
 
 section .banner .radio {
@@ -1560,18 +1570,25 @@ form select {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 100
+    z-index: 100;
+    display:none;
 }
-@media (min-width:420px){
+@media (min-width:1100px){
     .Social-Bar{
-        right:18px;
+        display:flex;
+    }
+}
+
+@media (min-width:420px) {
+    .Social-Bar {
+        right: 18px;
     }
 }
 
 .icon {
     color: white;
     text-decoration: none;
-    padding: .5rem;
+    padding: .2rem;
     display: flex;
     transition: all ease-in-out .5s;
     margin: .025rem 0
@@ -1598,7 +1615,7 @@ form select {
 }
 
 .icon:hover {
-    padding-right: 3rem;
+    padding-right: 5rem;
     border-radius: .5rem 0 0 1rem;
 }
 
@@ -1608,34 +1625,45 @@ form select {
     background: #202020;
     color: #fff;
 }
-#rodape .container-body a, #rodape label{
-    color:#c7c7c7
+
+#rodape .container-body a,
+#rodape label {
+    color: #c7c7c7
 }
-#rodape a:hover, #rodape a:hover label{
-    color:#fff
+
+#rodape a:hover,
+#rodape a:hover label {
+    color: #fff
 }
+
 .container-footer-all {
     width: auto;
     max-width: 1300px;
     margin: auto;
     padding: 4rem
 }
-@media (max-width:700px){
-.container-footer-all{
-    padding: 2rem
+
+@media (max-width:700px) {
+    .container-footer-all {
+        padding: 2rem
+    }
+
+    #rodape p {
+        text-align: left
+    }
 }
-#rodape p{
-    text-align:left
-}
-}
+
 .container-body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap
 }
-@media (max-width:701px){
-    .container-body, .footer{
-        flex-direction:column
+
+@media (max-width:701px) {
+
+    .container-body,
+    .footer {
+        flex-direction: column
     }
 }
 
@@ -1653,22 +1681,23 @@ form select {
 }
 
 .coluna1 p {
-    font-size:.95rem;
+    font-size: .95rem;
     color: #c7c7c7;
-    margin-top:20px;
-    text-align:justify;
-    line-height:1.3rem;
-    letter-spacing:-.01rem
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 1.3rem;
+    letter-spacing: -.01rem
 }
-.coluna3 label{
-    line-height:1.4rem
+
+.coluna3 label {
+    line-height: 1.4rem
 }
 
 .row,
 .row2 {
     margin-top: 20px;
     display: flex;
-    align-items:center
+    align-items: center
 }
 
 .row img,
@@ -1687,11 +1716,12 @@ form select {
 .row2 label {
     margin-top: 10px;
     margin-left: 20px;
-    
+
 }
-@media(min-width:700px){
-    .row2 label{
-    max-width: 200px
+
+@media(min-width:700px) {
+    .row2 label {
+        max-width: 200px
     }
 }
 
@@ -1699,8 +1729,9 @@ form select {
     width: auto;
     background: #111;
 }
-@media (max-width:700px){
-    .container-footer{
+
+@media (max-width:700px) {
+    .container-footer {
         padding: 0 0 3rem
     }
 }
@@ -1709,21 +1740,23 @@ form select {
     max-width: 1200px;
     margin: auto;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    max-width:700px
-}
-.footer div{
-    margin:1rem 0
+    max-width: 700px
 }
 
-@media (min-width:900px){
-    .footer{
-        flex-direction:row;
-        max-width:1000px
+.footer div {
+    margin: 1rem 0
+}
+
+@media (min-width:900px) {
+    .footer {
+        flex-direction: row;
+        max-width: 1000px
     }
 }
+
 .copyright {
     color: #c7c7c7
 }

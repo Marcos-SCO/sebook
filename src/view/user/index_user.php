@@ -18,6 +18,7 @@ $output = ob_get_clean();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +26,10 @@ $output = ob_get_clean();
     <!--<link rel="stylesheet" href="http://localhost/sebook/css/slick.css">-->
     <link rel="stylesheet" href="<?php echo _CSSBASEUSER_ ?>">
     <?= $styleSobrescrito ?? "" ?>
-    <?= $cssCaminho ?? ""; ?>
-    <title><?= isset($title) ? 'Sebook | ' . $title : 'Sebook'; ?></title>
+    
+    <?= $cssCaminho ?? "" ?>
 
+    <title><?=isset($title)?'Sebook | '.$title:'Sebook'?></title>
     <script src='<?= _URLBASE_ ?>public/js/funcoes.js'></script>
 </head>
 

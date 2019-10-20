@@ -40,6 +40,7 @@ $resultSeboLivro = $seboLivroDAO->listarSeboLivroId();
         <?php
         if ($resultSeboLivro != null) {
             foreach ($resultSeboLivro as $seboLivro) {
+                //Seto isbn para listar os livros
                 $livroDAO->setIsbnLivro($seboLivro['isbnLivro']);
                 $resultLivro = $livroDAO->listarLivroSebo();
                 ?>
