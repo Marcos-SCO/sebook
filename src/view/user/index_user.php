@@ -26,11 +26,12 @@ $output = ob_get_clean();
     <!--<link rel="stylesheet" href="http://localhost/sebook/css/slick.css">-->
     <link rel="stylesheet" href="<?php echo _CSSBASEUSER_ ?>">
     <?= $styleSobrescrito ?? "" ?>
-    
+
     <?= $cssCaminho ?? "" ?>
 
-    <title><?=isset($title)?'Sebook | '.$title:'Sebook'?></title>
+    <title><?= isset($title) ? 'Sebook | ' . $title : 'Sebook' ?></title>
     <script src='<?= _URLBASE_ ?>public/js/funcoes.js'></script>
+        
 </head>
 
 <body>
