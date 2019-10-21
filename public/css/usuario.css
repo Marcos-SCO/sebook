@@ -1234,8 +1234,7 @@ header,
 
 .navDesk ul li {
     list-style: none;
-    /* padding: .6rem 1rem */
-    padding: 1rem
+    padding: .9rem .75rem
 }
 
 .navDesk ul a {
@@ -1248,15 +1247,18 @@ header img {
 
 header .perfil {
     max-width: 40px;
-    align-self: flex-end
+    margin-top: 1.4%;
 }
 
 header .menuGroup {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    box-sizing: border-box
+    padding: .1rem 1.1rem 0rem 1.2rem;
+    box-sizing: border-box;
+    align-items: center;
+    min-height: 110px;
+    max-height: 110px;
 }
 
 .navDesk {
@@ -1278,6 +1280,7 @@ header .menuGroup {
     .busca .container {
         padding: 3%
     }
+ 
 }
 
 @media (min-width:780px) {
@@ -1342,6 +1345,11 @@ section {
     position: relative;
     /* padding: 60px 0 0 0 */
 }
+@media(min-width:700px){
+    section .banner{
+    margin-top:-2rem;
+}
+}   
 
 section .banner {
     width: 100%;
@@ -1771,3 +1779,74 @@ form select {
     text-decoration: none;
     color: #c7c7c7
 }
+
+
+
+/*formatação de links para usuario logado*/
+.logGroup{
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: flex-end;
+}
+.logGroup a{
+    margin: .4rem .4rem;
+}
+.circle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3%;
+}
+.circle img{
+    overflow: hidden;
+    padding: .1rem;
+    background: #fff;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin-top: 17%
+}
+.circle p{
+    position: relative;
+    top: -.9rem;
+    background: #fff;
+    padding: .1rem;
+    width: 92%;
+    text-align: center;
+}
+.logGroup figcaption{
+    display:none;
+    z-index:999;
+}
+@media(min-width:782px){
+    .logItem{
+        right: 17px!important;
+    }
+    /* .logItem{
+        right: 95x!important
+    } */
+}
+.logItem{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100.3px;
+    width: 95px;
+    background: #fff;
+    font-size: 1.1rem;
+    padding: .4rem;
+    z-index: 999;
+    right: 0;
+}
+
+input[type=checkbox]{
+    display:none
+} 
+input[type=checkbox]:checked + figure figcaption {
+    /* color: #f00;
+    font-style: normal; */
+    display:flex;
+} 
+
+
+/**?

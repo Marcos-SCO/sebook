@@ -65,7 +65,9 @@ header .menuGroup {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    box-sizing: border-box
+    box-sizing: border-box;
+    min-height: 110px;
+    max-height: 110px;
 }
 
 .navDesk {
