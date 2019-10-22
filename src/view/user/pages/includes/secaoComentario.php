@@ -35,7 +35,7 @@ if ($resultComentario != null || $resultComentario >= 1) {
 
                             $comentarioDAO->setTxtComentario($resultComentarioId['txtComentario']);
                     ?>
-                        <label class="btn-modal-cadastre" for="modal-editar" value="<?= $comentario['idComentario'] ?>" onclick="return pegaId(<?= $comentario['idComentario'] ?>)">Editar</label>
+                        <label class="btn-modal-cadastre" for="modal-editar" value="<?= $comentario['idComentario'] ?>" onclick="return pegaId(<?= $comentario['idComentario'] ?>,'<?= $comentario['txtComentario']?>')">Editar</label>
 
                         <!--Formulário para excluir-->
                         <form method="post" action="" name="exçluir">
@@ -94,11 +94,11 @@ if ($resultComentario != null || $resultComentario >= 1) {
                             return document.getElementById(id);
                         }
 
-                        function pegaId(id) {
+                        function pegaId(id, msg) {
                             //gId(idComentario).setAttribute('value',id);
                             document.getElementById("idComentario").setAttribute("value", id);
 
-                            document.getElementById("txtComentarioAtualiza").setAttribute("value", id);
+                            document.getElementById("txtComentarioAtualiza").innerHTML=msg;
 
                             return
                         }
