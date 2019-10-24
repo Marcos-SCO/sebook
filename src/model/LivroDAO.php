@@ -12,6 +12,8 @@ class LivroDAO extends Livro
 
     private static $SELECT_ALL = "select * from livro where cod_status_livro = '1' order by id_editora";
 
+    private static $SELECT_ALL_LIVRO = "SELECT * FROM livro where nome_livro like %:parametro% ORDER BY nome_livro ASC";
+
     private static $INSERT = "INSERT INTO livro (isbn_livro, id_categoria, ano_livro, nome_livro, sinopse_livro, id_editora, url_foto_livro) VALUES (:isbnLivro, :idCategoria, :anoLivro, :nomeLivro, :sinopseLivro, :idEditora, :urlFotoLivro)";
 
     private static $SELECT_ID = "SELECT * FROM livro WHERE isbn_livro = :isbnLivro";
@@ -58,6 +60,36 @@ class LivroDAO extends Livro
         }
 
             // var_dump($itens);
+        } else {
+            $itens = null;
+        }
+        //devolver o resultado     
+        return $itens;
+    }
+    
+    public function buscaLivro()
+    {
+        //executar a consulta no banco
+        $result = $this->sql->query(
+            LivroDAO::$SELECT_ALL_LIVRO,
+            array(
+                ':parametro' => array(0 => $this->getNomeLivro(), 1 => \PDO::PARAM_STR)
+            )
+        );
+        if ($result->rowCount() > 0) {
+            while($linha = $result->fetch(\PDO::FETCH_OBJ)){
+            $itens[] = array(
+                'isbnLivro' => $linha->isbn_livro,
+                'anoLivro' => $linha->ano_livro,
+                'urlFotoLivro' => $linha->url_foto_livro,
+                'nomeLivro' => $linha->nome_livro,
+                'sinopseLivro' => $linha->sinopse_livro,
+                'codStatusLivro' => $linha->cod_status_livro,
+                'idEditora' => $linha->id_editora,
+                'idCategoria' => $linha->id_categoria
+            );
+        }
+        // var_dump($itens);
         } else {
             $itens = null;
         }
