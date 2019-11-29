@@ -27,7 +27,16 @@ $clienteController->gravarAlterar();
 			?>
 		</tbody>
 	</table>
-	<input class="button" type="button" onclick="window.location='http://localhost/sebook/area/adm/cadastro/cadCliente/add'" value="Novo">
+
+	<section class="notificador">
+		<?php
+		//Estou usando a Url da lista que quero controlar
+		$urlDoNotificador = "area/adm/cadastro/cadCliente";
+		echo $clienteController->exibirNotificador($urlDoNotificador);
+		?>
+	</section>
+
+	<input class="button" type="button" onclick="window.location='<?= _URLBASE_ ?>area/adm/cadastro/cadCliente/add'" value="Novo">
 </section>
 
 <section class="<?php echo $clienteController->getFormulario(); ?>">
@@ -81,7 +90,9 @@ $clienteController->gravarAlterar();
 		<label>Número</label>
 		<input class="grande" type="text" name="numComplCliente" id="numComplCliente" value="<?= $clienteController->getClienteDAO()->getNumComplCliente() ?>">
 
-		<input type="hidden" name="txtImg" id="txtImg" value="<?= $clienteController->getClienteDAO()->getUrlFotoCliente() ?>">
+		<!-- <input type="hidden" name="txtImg" id="txtImg" value="<?//= $clienteController->getClienteDAO()->getUrlFotoCliente() ?>"> -->
+
+		<input type="hidden" name="txtImg" id="txtImg" value="<?= $clienteController->getUsuarioDAO()->getUrlFoto() ?>">
 
 		<label> </label>
 		<input class="buttonCancel" type="reset" value="Limpar">
@@ -89,23 +100,28 @@ $clienteController->gravarAlterar();
 	</form>
 
 	<div class="img">
-		<form action="<?= _URLBASE_ ?>src/view/adm/cadastro/uploadAdm/clientePerfilUpload.php" method='post' enctype='multipart/form-data' target='ifrmUpload' name="urlFotoCliente">
+		<form action="<?= _URLBASE_ ?>src/view/adm/cadastro/uploadAdm/clientePerfilUpload.php" method='post' enctype='multipart/form-data' target='ifrmUpload' name="urlFoto">
 
-			<input type="file" name="urlFotoCliente">
+			<input type="file" name="urlFoto">
 
 			<input class="button" type="submit" value="Carregar">
 		</form>
 		<iframe id="ifrmUpload" name="ifrmUpload" src="" frameborder="0"></iframe>
 	</div>
+
+	<?php
+	if ($clienteController->getUsuarioDAO()->getUrlFoto() != "") { 
+		$src = _URLBASE_ . $clienteController->getUsuarioDAO()->getUrlFoto();
+	} else {
+		$src = _URLBASE_ . "public/img/imgPerfil/imgPadrao/padrao.png";
+	}
+	?>
 	<div class="imgCadastro">
 		<picture>
-			<img id="imgAvatar" src="<?= "http://localhost/sebook/" . $clienteController->getClienteDAO()->getUrlFotoCliente()  ?>" alt="Avatar" class="avatar">
+			<img id="imgAvatar" src="<?=$src?>" alt="Avatar" class="avatar">
 		</picture>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<a href="http://localhost/Sebook/area/adm/cadastro/cadCliente">Voltar</a>
+
+	<a href="<?= _URLBASE_ ?>area/adm/cadastro/cadCliente">Voltar</a>
 </section>

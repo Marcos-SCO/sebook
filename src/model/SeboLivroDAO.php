@@ -11,7 +11,15 @@ class SeboLivroDAO extends SeboLivro
     //Atributos - serão os comandos SQL  + um objeto Sql
     private static $SELECT_ALL = "select * from sebo_livro";
 
-    private static $SELECT_ID = "SELECT * FROM sebo_livro WHERE id_usuario = :idUsuario";
+    private static $SELECT_TOT = "SELECT count(id_usuario) as tot from sebo_livro INNER JOIN livro ON (sebo_livro.isbn_livro = livro.isbn_livro) 
+    WHERE livro.cod_status_livro = '1'";
+    
+    private static $SELECT_TOT_SEBO = "SELECT count(id_usuario) as tot from sebo_livro INNER JOIN livro ON (sebo_livro.isbn_livro = livro.isbn_livro) 
+    WHERE livro.cod_status_livro = '1' AND sebo_livro.id_usuario = :idSebo";
+
+    private static $SELECT_ALL_SEBO_LIVRO = "SELECT * FROM sebo_livro inner join usuario ON (sebo_livro.id_usuario = usuario.id_usuario) INNER JOIN sebo ON  (sebo_livro.id_usuario = sebo.id_usuario) AND isbn_livro = :isbnLivro";
+
+    private static $SELECT_ID = "SELECT * FROM sebo_livro WHERE id_usuario = :idUsuario ORDER BY qtd_estoque DESC";
 
     private static $SELECT_ID_ISBN = "SELECT * FROM sebo_livro WHERE id_usuario = :idUsuario and isbn_livro = :isbnLivro";
 
@@ -25,17 +33,23 @@ class SeboLivroDAO extends SeboLivro
     private $sql;
 
     //Método Construtor - setamos os parametros e passamos um obj SQL
-    public function __construct($objSql = "", $idUsuario = "", $isbnLivro = "", $qtdEstoque = "")
+    public function __construct($objSql = "", $idUsuario = "", $isbnLivro = "", $qtdEstoque = "", $estadoLivro = "")
     {
-        parent::__construct($idUsuario, $isbnLivro, $qtdEstoque);
+        parent::__construct($idUsuario, $isbnLivro, $qtdEstoque, $estadoLivro);
         $this->sql = $objSql;
     }
 
     //Métodos especialistas - irão executar os SQL dos Atributos
-    public function listarSeboLivro()
+    public function listarSeboLivro($ini = -1, $qtde = 1)
     {
+        if ($ini >= 0) {
+            $limit = " limit $ini , $qtde ";
+        } else {
+            $limit = "";
+        }
+
         //executar a consulta no banco
-        $result = $this->sql->query(SeboLivroDAO::$SELECT_ALL);
+        $result = $this->sql->query(SeboLivroDAO::$SELECT_ALL . $limit);
         //devolver o resultado
 
         if ($result->rowCount() > 0) {
@@ -52,11 +66,34 @@ class SeboLivroDAO extends SeboLivro
         return $itens;
     }
 
-    public function listarSeboLivroId()
+    public function totalContar()
     {
+        $result = $this->sql->query(SeboLivroDAO::$SELECT_TOT);
+        $linha = $result->fetch(\PDO::FETCH_OBJ);
+        return $linha->tot;
+    }
+    
+    public function totalContarSebo($id)
+    {
+        $result = $this->sql->query(SeboLivroDAO::$SELECT_TOT_SEBO,
+        array(
+            ':idSebo' => array(0 => $id, 1 => \PDO::PARAM_INT)
+        ));
+        $linha = $result->fetch(\PDO::FETCH_OBJ);
+        return $linha->tot;
+    }
+
+    public function listarSeboLivroId($ini = -1, $qtde = 1)
+    {
+        if ($ini >= 0) {
+            $limit = " limit $ini, $qtde ";
+        } else {
+            $limit = "";
+        }
+
         //executar a consulta no banco
         $result = $this->sql->query(
-            SeboLivroDAO::$SELECT_ID,
+            SeboLivroDAO::$SELECT_ID . $limit,
             array(
                 ':idUsuario' => array(0 => $this->getIdUsuario(), 1 => \PDO::PARAM_INT)
             )
@@ -77,6 +114,62 @@ class SeboLivroDAO extends SeboLivro
         }
         //devolver o resultado     
         return $itens;
+    }
+    // public function listarSeboLivroId()
+    // {
+    //     //executar a consulta no banco
+    //     $result = $this->sql->query(
+    //         SeboLivroDAO::$SELECT_ID,
+    //         array(
+    //             ':idUsuario' => array(0 => $this->getIdUsuario(), 1 => \PDO::PARAM_INT)
+    //         )
+    //     );
+    //     if ($result->rowCount() > 0) {
+            
+    //         while($linha = $result->fetch(\PDO::FETCH_OBJ)){
+    //         $itens[] = array(
+    //             'idUsuario' => $linha->id_usuario,
+    //             'isbnLivro' => $linha->isbn_livro,
+    //             'qtdEstoque' => $linha->qtd_estoque,
+    //             'estadoLivro' => $linha->estado_livro
+    //         );
+    //     }
+
+    //         // var_dump($itens);
+    //     } else {
+    //         $itens = null;
+    //     }
+    //     //devolver o resultado     
+    //     return $itens;
+    // }
+
+    public function listarSeboLivrosIsbn()
+    {
+        //executar a consulta no banco
+        $result = $this->sql->query(
+            SeboLivroDAO::$SELECT_ALL_SEBO_LIVRO,
+            array(
+                'isbnLivro' => array(0 => $this->getIsbnLivro(), 1 => \PDO::PARAM_INT)
+            )
+        );
+
+        if ($result->rowCount() > 0) {
+            
+            while($linha = $result->fetch(\PDO::FETCH_OBJ)){
+            $itens[] = array(
+                'idUsuario' => $linha->id_usuario,
+                'isbnLivro' => $linha->isbn_livro,
+                'qtdEstoque' => $linha->qtd_estoque,
+                'nomeFantasia' => $linha->nome_fantasia,
+                'cnpjSebo' => $linha->cnpj_sebo,
+                'cepEndSebo' => $linha->cep_end_sebo,
+                'urlFoto' => $linha->url_foto
+            );
+        } 
+            return $itens;
+        } else {
+            $itens = null;
+        }
     }
 
     public function listarSeboLivroIdIsbn()
@@ -111,7 +204,7 @@ class SeboLivroDAO extends SeboLivro
             array(
                 ':idUsuario' => array(0 => $this->getIdUsuario(), 1 => \PDO::PARAM_INT),
                 ':isbnLivro' => array(0 => $this->getIsbnLivro(), 1 => \PDO::PARAM_STR),
-                ':qtdEstoque' => array(0 => $this->getQtdEstoque(), 1 => \PDO::PARAM_STR)
+                ':qtdEstoque' => array(0 => $this->getQtdEstoque(), 1 => \PDO::PARAM_STR) 
             )
         );
         return $result;

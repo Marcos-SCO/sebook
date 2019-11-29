@@ -1,54 +1,63 @@
 <footer id="rodape">
 	<div class="container-footer-all">
-
 		<div class="container-body">
 			<div class="coluna1">
 				<h1>Mais Informações do site</h1>
 				<p>
-					SebooK é uma Plataforma Web dedicada aos amantes de livros usados com a principal missão de fornecer acesso ágil e eficiente
-					aos leitores na busca por livros em sua região. Oferecemos um sistema de Gestão de Acervos para os donos de sebos parceiros.
-					Promovemos interação entre sebos e leitores sob um enfoque social - através da Economia Solidária - incentivando assim
-					o consumo sustentável, pois, além de garantir economia ao leitor, trará visibilidade aos empreendedores desse mercado,
-					estimulando e fomentando de forma ecológica o consumo dessas obras dentro e fora dos grandes centros.
+					Sebook é uma plataforma web voltada aos amantes de livros usados. Acreditamos na força da economia solidária
+					e com isso damos visibilidade aos empreendedores, incentivamos o consumo sustentável de recursos e auxiliamos
+					os leitores a pouparem tempo e dinheiro ao comprar pela internet.
+					A missão do Sebook é enriquecer culturalmente toda a comunidade com uma ação de baixo custo econômico, viabilizando
+					a interação leitor-sebo com nossa ferramenta de busca regionalizada.
+					Promovemos e incentivamos reciclagens de livros inservíveis para serem transformados em artesanatos e outras artes.
+					Oferecemos um sistema de Gestão de Acervos para os sebos parceiros do Sebook.
 				</p>
-
 			</div>
 			<div class="coluna2">
 				<h1>Redes Sociais</h1>
 				<div class="row">
 					<a href="#face">
-						<img src="<?= _ICONBASE_ ?>facebookSVG.svg" alt="">
+						<img src="<?= _URLBASE_ ?>public/icon/facebookLogo.png" alt="">
 						<label>Facebook</label>
+					</a>
+				</div>
+
+				<!-- <h1 class="intro-copy"></h1>
+
+				<a class="top-link hide" href="" id="js-top">
+					<img src="<? //= _URLBASE_ 
+								?>public/icon/arrow.svg" viewBox="0 0 12 6">
+					<path d="M12 6H0l6-6z" alt="Sebook">
+					<span class="screen-reader-text"></span>
+				</a> -->
+				<!--NANIKORE?-->
+
+				<div class="row">
+					<a href="#instagram">
+						<img src="<?= _URLBASE_ ?>public/icon/instagramLogo.png" alt="">
+						<label>Instagram</label>
 					</a>
 				</div>
 				<div class="row">
 					<a href="#twitter">
-						<img src="<?= _ICONBASE_ ?>twitterSVG.svg" alt="">
+						<img src="<?= _URLBASE_ ?>public/icon/twitterLogo.png" alt="">
 						<label>Twitter</label>
-					</a>
-				</div>
-				<div class="row">
-					<a href="#instagram">
-						<img src="<?= _ICONBASE_ ?>instagramSVG.svg" alt="">
-						<label>Instagram</label>
 					</a>
 				</div>
 			</div>
 			<div class="coluna3">
-				<h1>Contato</h1>
+				<h1>Entre em contato</h1>
 				<div class="row2">
-					<a href="#contato">
-						<img src="<?= _ICONBASE_ ?>homeSVG.svg" alt="">
-						<label>Entre em contato conosco</label>
+					<a href="#email">
+						<img src="<?= _URLBASE_ ?>public/icon/email.svg" alt="">
+						<label>contato@sebook.com.br</label>
 					</a>
 				</div>
 				<div class="row2">
-					<img src="<?= _ICONBASE_ ?>emailSVG.svg" alt="">
-					<label>
-						Caixa Postal 5180,
-						<br>São Paulo - SP - Brasil
-						<br>CEP: 01311-100
-					</label>
+					<a href="#postal">
+						<img src="<?= _URLBASE_ ?>public/icon/homeFooter.svg" alt="">
+						<label id=postalFooter>Caixa Postal 5180<br>São Paulo - SP - Brasil<br>CEP: 01311-100</label>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -63,9 +72,9 @@
 			</div>
 
 			<div class="informar">
-				<a href="">Informação Companhia </a> |
-				<a href="">Privações e Politica </a> |
-				<a href="">Termos e Condições</a>
+				<a href="<?= _URLBASE_ ?>area/user/pages/centralDeAjuda" class="ajuda">Central de Ajuda </a> |
+				<a href="<?= _URLBASE_ ?>area/user/pages/politicaDePrivacidade" class="Seguranca">Politica de Privacidade </a> |
+				<a href="<?= _URLBASE_ ?>area/user/pages/termosDeUso" class="Termos ">Termos de Uso</a>
 			</div>
 		</div>
 	</div>
@@ -75,22 +84,18 @@
 <div class="master1">
 	<nav class="menuMobile">
 		<a href="<?= _URLBASE_ ?>" class="home">
-			<img src="<?= _ICONBASE_ ?>homeSVG.svg" alt="Home" title="Página inicial">
+			<img src="<?= _URLBASE_ ?>public/icon/home.svg" alt="Home" title="Página inicial">
 		</a>
-		<a href="<?= _URLBASE_ ?>area/user/pages/busca" class="search">
-			<img src="<?= _ICONBASE_ ?>buscaSVG.svg" alt="Buscar" title="Buscar">
+		<a href="<?= _URLBASE_ ?>area/user/menuHome/livros" class="search">
+			<img src="<?= _URLBASE_ ?>public/icon/busca.svg" alt="Buscar" title="Buscar">
 		</a>
 		<div class="menu">
 			<input type="checkbox" id="menuH">
 			<label for="menuH">
-				<img src="<?= _ICONBASE_ ?>menuSVG.svg" alt="">
+				<img src="<?= _URLBASE_ ?>public/icon/menu.svg" alt="">
 			</label>
 			<div class="ulCenter">
 				<ul>
-					<!--<li><a href="<?php
-										// echo _URLBASE_ 
-										?>src/view/user/pages/menu/sebos.php">SEBOS</a>
-					</li>-->
 					<li>
 						<a href="<?= _URLBASE_ ?>">HOME</a>
 					</li>
@@ -101,12 +106,25 @@
 						<a href="<?= _URLBASE_ ?>area/user/menuHome/livros">LIVROS</a>
 					</li>
 					<li>
-						<a href="<?= _URLBASE_ ?>area/user/menuHome/quemSomos">QUEM SOMOS</a>
+						<a href="<?= _URLBASE_ ?>area/user/pages/eventoListar">EVENTOS</a>
 					</li>
+					<?php
+					if ($acessoUser != 4 && $acessoUser != 3 && $acessoUser != null && $acessoUser != "") {
+						echo "<li>
+								<a href='" . _URLBASE_ . "area/user/pages/eventoCriar'>CRIAR EVENTO</a></a>
+							 </li>";
+					}
+					?>
 					<li>
-						<a href="<?= _URLBASE_ ?>area/user/menuHome/ajuda">FAQ</a>
+						<a href="<?= _URLBASE_ ?>area/user/pages/postListar">POSTAGENS</a>
 					</li>
-				</ul>
+					<?php
+					if ($acessoUser != 4 && $acessoUser != 3 && $acessoUser != null && $acessoUser != "") {
+						echo "<li>
+								<a href='" . _URLBASE_ . "area/user/pages/postCriar'>CRIAR POSTAGEM</a></a>
+							 </li>";
+					}
+					?>
 				</ul>
 			</div>
 		</div>
