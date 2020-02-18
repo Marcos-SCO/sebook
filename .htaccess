@@ -49,3 +49,4 @@ RewriteRule ^area\/([a-z]+)\/([a-z]+)\/([a-z]+)\/delete\/([\d]+)$ http://localho
 
 #regra para sair do login
 RewriteRule ^area/adm/sair$ http://localhost/Sebook/index.php?area=adm&logout=true [NC,L]
+
